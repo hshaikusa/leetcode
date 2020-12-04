@@ -5,4 +5,21 @@ class Solution:
             shuffled_nums.append(nums[i])
             shuffled_nums.append(nums[i+n])
         return shuffled_nums
-        #return [nums[i], nums[n+i] for i in range(n)]
+
+# using generators:
+
+class Solution:
+    def shuffle(self, nums: List[int], n: int) -> List[int]:
+        for i in range(n):
+            yield nums[i]
+            yield nums[n+i]
+            
+         
+# using chain, itertools, from_iterable
+
+from itertools import chain
+class Solution:
+    def shuffle(self, nums: List[int], n: int) -> List[int]:
+        return list(chain.from_iterable((nums[i],nums[i+n]) for i in range(n)))
+        
+
